@@ -1,0 +1,14 @@
+.cabecalho{
+    display: flex;
+    justify-content: space-around;
+}
+
+.titulo{
+    font-size: 3rem;
+    color: chocolate;
+    background-color: #000;
+}
+
+.subtitulo{
+    font-size: 2rem;
+}
