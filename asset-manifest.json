@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/favio/static/css/main.4f7c12fd.css",
-    "main.js": "/favio/static/js/main.49e3bb9f.js",
+    "main.css": "/favio/static/css/main.5bea77c1.css",
+    "main.js": "/favio/static/js/main.88e4cf88.js",
     "static/js/787.f04ad837.chunk.js": "/favio/static/js/787.f04ad837.chunk.js",
     "index.html": "/favio/index.html",
-    "main.4f7c12fd.css.map": "/favio/static/css/main.4f7c12fd.css.map",
-    "main.49e3bb9f.js.map": "/favio/static/js/main.49e3bb9f.js.map",
+    "main.5bea77c1.css.map": "/favio/static/css/main.5bea77c1.css.map",
+    "main.88e4cf88.js.map": "/favio/static/js/main.88e4cf88.js.map",
     "787.f04ad837.chunk.js.map": "/favio/static/js/787.f04ad837.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f7c12fd.css",
-    "static/js/main.49e3bb9f.js"
+    "static/css/main.5bea77c1.css",
+    "static/js/main.88e4cf88.js"
   ]
 }
