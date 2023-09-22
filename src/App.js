@@ -1,7 +1,8 @@
 import './App.css';
 import Cabecalho from './componentes/Cabecalho'
-import Conteudo,{OlaMundo} from './componentes/Conteudo';
+import Conteudo from './componentes/Conteudo2';
 import Rodape from './componentes/Rodape';
+import Estados from './exemplos/Estados';
 
 
 /*
@@ -10,7 +11,6 @@ Componente funcional = Porque ele é uma função
 */
 function App() {
 
-  OlaMundo();
   /*Todo componente deve retornar um html entre parenteses*/
   return (
     /*O React substitui className por class pq class é palavra reservada do JS*/
@@ -18,6 +18,7 @@ function App() {
     {/* Nosso cabecalho tem uma propriedade chamada titulo */}
     <Cabecalho logo="logo192.png" titulo="Fav.io" subtitulo="O melhor gerenciador de favoritos da Internet Brasileira!!!"/>
     <Conteudo/>
+    {/* <Estados/> */}
     <Rodape/>
     </>
   );
