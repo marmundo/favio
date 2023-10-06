@@ -4,45 +4,52 @@ import styles from "./Conteudo.module.css";
 const Conteudo = () => {
   const [nomeSite, setNomeSite] = useState("");
   const [url, setUrl] = useState("");
-
-  let favoritos=[]
+  const [favoritos, setFavoritos] = useState([]);
 
   function salvarFavorito() {
-    console.log('favoritos>>>:',favoritos)
-    console.log('estados>>>:',{nomeSite,url})
-    favoritos=[...favoritos, {nomeSite,url}]
-    console.log('favoritos 2>>>:',favoritos)
-    localStorage.setItem("favorito", JSON.stringify(favoritos));
+    setFavoritos([...favoritos, { nomeSite, url }]);
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
   }
 
   return (
-    <div className={styles.area}>
-      Conteudo
-      <form
-        className={styles.formulario}
-        onSubmit={() => alert("Favorito salvo")}
-      >
-        <label>Nome do Site</label>
-        <h1>{nomeSite}</h1>
-        <input
-          name="nome_site"
-          onChange={(evento) => {
-            setNomeSite(evento.target.value);
-          }}
-        ></input>
-        <br />
-        <label>URL</label>
-        <input
-          type="url"
-          name="url"
-          onChange={(evento) => {
-            setUrl(evento.target.value);
-          }}
-        ></input>
-        <br />
-        <button onClick={() => salvarFavorito()}>Salvar</button>
-      </form>
-    </div>
+    <>
+      <ul>
+        {favoritos[0] !== undefined &&
+          favoritos.map((favorito) => (
+            <li>{favorito.nomeSite} : {favorito.url}</li>
+          ))}
+      </ul>
+
+      <div className={styles.area}>
+        <h1>Conteudo</h1>
+        <form className={styles.formulario}>
+          <label>Nome do Site</label>
+          <h1>{nomeSite}</h1>
+          <input
+            name="nome_site"
+            onChange={(evento) => {
+              setNomeSite(evento.target.value);
+            }}
+          ></input>
+          <br />
+          <label>URL</label>
+          <input
+            type="url"
+            name="url"
+            onChange={(evento) => {
+              setUrl(evento.target.value);
+            }}
+          ></input>
+          <br />
+          <input
+            type="button"
+            value="Salvar"
+            onClick={() => salvarFavorito()}
+          />
+          {/* <button onClick={(e) =>{e.preventDefault(); salvarFavorito()}}>Salvar</button> */}
+        </form>
+      </div>
+    </>
   );
 };
 
