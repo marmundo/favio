@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from "../Conteudo/Conteudo.module.css";
+import styles from "../../componentes/Conteudo/Conteudo.module.css";
 
 const Login = () => {
 
@@ -15,10 +15,7 @@ const Login = () => {
     }
     function handleSubmit(e){
        const user=JSON.parse(localStorage.getItem('user'))
-       console.log(user)
        if (user!=null){
-        console.log(user.email)
-        console.log(user.senha)
         if(email==user.email && senha==user.senha){
             alert("Usuário Logado")
         }else{

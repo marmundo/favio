@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from "../Conteudo/Conteudo.module.css";
+import styles from "../../componentes/Conteudo/Conteudo.module.css";
 
 const CadastroUsuario = () => {
 
