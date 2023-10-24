@@ -7,18 +7,44 @@ const Conteudo = () => {
   const [isImportante, setIsImportante] = useState(false);
   const [favoritos, setFavoritos] = useState([]);
 
+  function isInFavoritos(nomeSite) {
+    return favoritos.findIndex((favorito) => {
+      return favorito.nomeSite === nomeSite;
+    });
+  }
+
   function salvarFavorito() {
-    setFavoritos([...favoritos, { nomeSite, url, isImportante }]);
+    const novoFavorito = { nomeSite, url, isImportante };
+    const indexInFavorites = isInFavoritos(nomeSite);
+    if (indexInFavorites === -1) setFavoritos([...favoritos, novoFavorito]);
+    else {
+      favoritos[indexInFavorites] = novoFavorito;
+      setFavoritos([...favoritos]);
+    }
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  }
+
+  function editFavorito(nomeSite) {
+    let favoritoFiltrado = favoritos.filter((favorito) => {
+      return favorito.nomeSite === nomeSite;
+    });
+    favoritoFiltrado = favoritoFiltrado[0];
+    setNomeSite(favoritoFiltrado.nomeSite);
+    setUrl(favoritoFiltrado.url);
+    setIsImportante(favoritoFiltrado.isImportante);
   }
 
   return (
     <>
       <ul>
-        {favoritos[0] !== undefined &&
+        {favoritos[0] &&
           favoritos.map((favorito) => (
-            <li style={favorito.isImportante ? { color: "red" } : {}}>
-              {favorito.nomeSite} : {favorito.url}
+            <li
+              key={favorito.nomeSite}
+              onClick={() => editFavorito(favorito.nomeSite)}
+              style={favorito.isImportante ? { color: "red" } : {}}
+            >
+              {favorito.nomeSite} : {favorito.url}:{favorito.isImportante}
             </li>
           ))}
       </ul>
@@ -27,9 +53,9 @@ const Conteudo = () => {
         <h1>Conteudo</h1>
         <form className={styles.formulario}>
           <label>Nome do Site</label>
-          <h1>{nomeSite}</h1>
           <input
             name="nome_site"
+            value={nomeSite}
             onChange={(evento) => {
               setNomeSite(evento.target.value);
             }}
@@ -39,6 +65,7 @@ const Conteudo = () => {
           <input
             type="url"
             name="url"
+            value={url}
             onChange={(evento) => {
               setUrl(evento.target.value);
             }}
@@ -48,10 +75,10 @@ const Conteudo = () => {
             type="checkbox"
             id="type"
             name="type"
-            value={isImportante && "checked"}
+            checked={isImportante}
             onChange={(e) => setIsImportante(!isImportante)}
           />
-          <label for="type" style={{ color: "red" }}>
+          <label htmlFor="type" style={{ color: "red" }}>
             Importante
           </label>
           <br />
