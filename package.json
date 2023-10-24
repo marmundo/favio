@@ -1,7 +1,8 @@
 {
   "name": "favio",
   "version": "0.1.0",
-  "homepage": "https://marmundo.github.io/favio",
+  "//":["'homepage': 'https://marmundo.github.io/favio'"],
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
